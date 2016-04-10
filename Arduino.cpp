@@ -5,7 +5,9 @@ Arduino::Arduino(QObject *parent)
 	, m_qwebsocketServer(new QWebSocketServer(QStringLiteral("arduino relay"),
 						 QWebSocketServer::NonSecureMode, this))
 {
+#ifdef HAS_QSERIALPORT
 	m_connectionModes.push_back("serial");
+#endif
 	m_connectionModes.push_back("websocket");
 	m_connectionModes.push_back("none");
 
